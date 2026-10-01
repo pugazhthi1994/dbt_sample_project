@@ -1,0 +1,8 @@
+version : 2
+
+sources:
+  - name: dbt_sample_tables
+    database: raw_db
+    schema: l1
+    tables:
+      - name: employee_details
