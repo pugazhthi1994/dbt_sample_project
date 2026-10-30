@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: silver_departments
+    config:
+      alias: SILVER_DEPARTMENTS
+      materialized: incremental
+      unique_key: ['department_id']
+      on_schema_change: sync_all_columns
+      incremental_strategy: merge
+      transient: true
+
+  - name: silver_employees
+    config:
+      alias: SILVER_EMPLOYEES
+      materialized: incremental
+      unique_key: ['employee_id']
+      on_schema_change: sync_all_columns
+      incremental_strategy: merge
+      transient: true
+    columns:
+      - name: EMPLOYEE_ID
+        tests:
+          - unique
+          - not_null
+      - name: SALARY
+        tests:
+          - not_null
+          - is_greater_than_zero

@@ -1,8 +1,14 @@
-version : 2
+version: 2
 
 sources:
-  - name: dbt_sample_tables
-    database: raw_db
-    schema: l1
+  - name: dbt_oracle_tables
+    database: DEV
+    schema: BRONZE
     tables:
-      - name: employee_details
+      - name: regions
+      - name: countries
+      - name: departments
+      - name: employees
+      - name: jobs
+      - name: job_history
+      - name: locations

@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: employee_raw
+    config:
+      alias: BRONZE_EMPLOYEES
+      materialized: incremental
+      unique_key: ['employee_id']
+      on_schema_change: sync_all_columns
+      incremental_strategy: merge
+      transient: true
+    columns:
+      - name: employee_id
+        description: "The unique primary key for each user account."
+        data_tests:
+          - unique
+          - not_null
+
+  - name: departments_raw
+    config:
+      alias: BRONZE_DEPARTMENTS
+      materialized: incremental
+      unique_key: ['department_id']
+      on_schema_change: sync_all_columns
+      incremental_strategy: merge
+      transient: true
+
+  - name: locations_raw
+    config:
+      alias: BRONZE_LOCATIONS
+      materialized: incremental
+      unique_key: ['location_id']
+      on_schema_change: sync_all_columns
+      incremental_strategy: merge
+      transient: true

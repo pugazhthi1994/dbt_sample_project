@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_departments_summary
+    config:
+      alias: GOLD_DEPARTMENTS_SUMMARY
+      materialized: incremental
+      unique_key: ['department_id']
+      on_schema_change: sync_all_columns
+      incremental_strategy: merge
+      transient: true
